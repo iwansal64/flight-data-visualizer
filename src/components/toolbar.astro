@@ -204,6 +204,12 @@ const airports = [
         gap: 20px;
 
         background-color: #00000055;
+
+        animation-name: toolbar-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in-out;
     }
 
     div.option-field {
@@ -215,5 +221,14 @@ const airports = [
     div.option-field > label {
         font-weight: bold;
         font-size: 1.2rem;
+    }
+
+    @keyframes toolbar-in {
+        0% {
+            top: -100px;
+        }
+        100% {
+            top: 20px;
+        }
     }
 </style>

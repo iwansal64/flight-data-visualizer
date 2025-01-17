@@ -39,6 +39,10 @@ const { id, options, selected_options } = Astro.props as Props;
         opacity: 0;
         cursor: pointer;
     }
+
+    div.dropdown:has( > input[type="checkbox"]:hover) {
+        background-color: #3b1b47;
+    }
     
     div.dropdown-options {
         position: absolute;
