@@ -1,3 +1,65 @@
 ---
 
 ---
+
+<div class="sidebar">
+    <h3>Aarhus Airport (Airport)</h3>
+    <div class="info-list">
+        <p><span class="name">id</span> : <span class="value">9</span></p>
+        <p><span class="name">name</span> : <span class="value">Aarhus Airport</span></p>
+        <p><span class="name">iata</span> : <span class="value">AAR</span></p>
+        <p><span class="name">icao</span> : <span class="value">EKAH</span></p>
+        <p><span class="name">city</span> : <span class="value">Aarhus</span></p>
+        <p><span class="name">lat</span> : <span class="value">56.303295</span></p>
+        <p><span class="name">lon</span> : <span class="value">10.619129</span></p>
+        <p><span class="name">country</span> : <span class="value">Denmark</span></p>
+        <p><span class="name">alt</span> : <span class="value">71</span></p>
+        <p><span class="name">size</span> : <span class="value">2130</span></p>
+        <p><span class="name">timezone</span> : <span class="value">Europe/Copenhagen (+1:00)</span></p>
+        <p><span class="name">countryId</span> : <span class="value">61</span></p>
+    </div>
+</div>
+
+<style>
+    div.sidebar {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 300px;
+        height: calc(100vh - (100px + 40px + 40px + 100px)); /* Calculate to just under toolbar */
+        padding: 40px;
+        border-radius: 15px;
+        background-color: #00000055;
+
+        animation-name: sidebar-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes sidebar-in {
+        0% {
+            right: -200px;
+        }
+        100% {
+            right: calc(5vw - 20px);
+        }
+    }
+
+    div.info-list {
+        margin-top: 5px;
+    }
+
+    div.info-list > p {
+        padding: 5px;
+    }
+    div.info-list > p > span.name {
+        border-bottom: 1px solid #ffffffaa;
+    }
+    div.info-list > p > span.value {
+        color: #8113b8;
+    }
+    
+</style>
