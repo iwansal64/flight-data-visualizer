@@ -1,2 +1,219 @@
 ---
+import { get_airlines } from "../typescript/api_interface";
+import Dropdown from "./customs/dropdown.astro";
+
+const airlines = [
+    {
+        "Name": "21 Air",
+        "Code": "2I",
+        "ICAO": "CSB"
+    },
+    {
+        "Name": "247 Aviation",
+        "Code": "",
+        "ICAO": "EMC"
+    },
+    {
+        "Name": "2Excel Aviation",
+        "Code": "",
+        "ICAO": "BRO"
+    },
+    {
+        "Name": "4 Airways",
+        "Code": "",
+        "ICAO": "DAK"
+    },
+    {
+        "Name": "40-Mile Air",
+        "Code": "Q5",
+        "ICAO": "MLA"
+    },
+    {
+        "Name": "748 Air Services",
+        "Code": "FE",
+        "ICAO": "IHO"
+    },
+    {
+        "Name": "9 Air",
+        "Code": "AQ",
+        "ICAO": "JYH"
+    },
+    {
+        "Name": "Abakan Air",
+        "Code": "S5",
+        "ICAO": "NKP"
+    },
+    {
+        "Name": "ABS Jets",
+        "Code": "",
+        "ICAO": "ABP"
+    },
+    {
+        "Name": "Abu Dhabi Aviation",
+        "Code": "",
+        "ICAO": "BAR"
+    },
+    {
+        "Name": "ABX Air",
+        "Code": "GB",
+        "ICAO": "ABX"
+    },
+    {
+        "Name": "Acass Ireland",
+        "Code": "",
+        "ICAO": "SON"
+    }
+];
+
+const airports = [
+    {
+        "id": 1900,
+        "name": "A Coruna Airport",
+        "iata": "LCG",
+        "icao": "LECO",
+        "city": "A Coruna",
+        "lat": 43.302059,
+        "lon": -8.37725,
+        "country": "Spain",
+        "alt": 326,
+        "size": 4038,
+        "timezone": {
+            "name": "Europe/Madrid",
+            "offset": 3600,
+            "offsetHours": "1:00",
+            "abbr": "CET",
+            "abbrName": "Central European Time",
+            "isDst": false
+        },
+        "countryId": 209
+    },
+    {
+        "id": 3,
+        "name": "Aachen Merzbruck Airport",
+        "iata": "AAH",
+        "icao": "EDKA",
+        "city": "Aachen",
+        "lat": 50.821899,
+        "lon": 6.184759,
+        "country": "Germany",
+        "alt": 626,
+        "size": 448,
+        "timezone": {
+            "name": "Europe/Berlin",
+            "offset": 3600,
+            "offsetHours": "1:00",
+            "abbr": "CET",
+            "abbrName": "Central European Time",
+            "isDst": false
+        },
+        "countryId": 83
+    },
+    {
+        "id": 4,
+        "name": "Aalborg Airport",
+        "iata": "AAL",
+        "icao": "EKYT",
+        "city": "Aalborg",
+        "lat": 57.095112,
+        "lon": 9.855172,
+        "country": "Denmark",
+        "alt": 3,
+        "size": 6175,
+        "timezone": {
+            "name": "Europe/Copenhagen",
+            "offset": 3600,
+            "offsetHours": "1:00",
+            "abbr": "CET",
+            "abbrName": "Central European Time",
+            "isDst": false
+        },
+        "countryId": 61
+    },
+    {
+        "id": 9,
+        "name": "Aarhus Airport",
+        "iata": "AAR",
+        "icao": "EKAH",
+        "city": "Aarhus",
+        "lat": 56.303295,
+        "lon": 10.619129,
+        "country": "Denmark",
+        "alt": 71,
+        "size": 2130,
+        "timezone": {
+            "name": "Europe/Copenhagen",
+            "offset": 3600,
+            "offsetHours": "1:00",
+            "abbr": "CET",
+            "abbrName": "Central European Time",
+            "isDst": false
+        },
+        "countryId": 61
+    }
+]
+
 ---
+
+<nav class="toolbar">
+    <div class="airline-option">
+        <div class="option-field">
+            <label for="airline-option">Airline: </label>
+            <Dropdown id="airline-option" options={[{
+                text: "Show All",
+                value: "All Airlines"
+            }].concat(airlines.map(airline => {
+                return {
+                    text: `${airline.Name} [${airline.ICAO}]`,
+                    value: airline.ICAO
+                }
+            }))} />
+        </div>
+    </div>
+    <div class="airport-option">
+        <div class="option-field">
+            <label for="airport-option">Airport: </label>
+            <Dropdown id="airport-option" options={[{
+                text: "Show All",
+                value: "All Airports"
+            }].concat(airports.map(airport => {
+                return {
+                    text: `${airport.city} [${airport.iata}]`,
+                    value: airport.iata
+                }
+            }))} />
+        </div>
+    </div>
+    <script src="../javascript/dropdown.js"></script>
+</nav>
+
+<style>
+    nav.toolbar {
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
+
+        width: 90vw;
+        height: 50px;
+        padding: 10px 20px;
+        border-radius: 20px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+
+        background-color: #00000055;
+    }
+
+    div.option-field {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    div.option-field > label {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
